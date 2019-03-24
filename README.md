@@ -2,9 +2,9 @@
 
 ## Quick start
 
-1. `composer require mprzyborowski/request-content-mapper-bundle`
-2. add line to config/bundles.php `RequestContentMapper\RequestContentMapperBundle::class => ['all' => true],`
-3. Create Request Object extending from `RequestContentMapper\ParamConverter\RequestContentObject`
+###1. `composer require mprzyborowski/request-content-mapper-bundle`
+###2. add line to config/bundles.php `RequestContentMapper\RequestContentMapperBundle::class => ['all' => true],`
+###3. Create Request Object extending from `RequestContentMapper\ParamConverter\RequestContentObject`
  Example (with Symfony Asserts it works automatically):
 ```php
 <?php
@@ -39,7 +39,7 @@ class TestRequest extends RequestContentObject
     public $phone;
 }
 ```
-4. Create Controller:
+###4. Create Controller:
 
 ```php
 <?php
@@ -70,7 +70,7 @@ class TestController
 
 ```
 
-Send Request To Controller:
+###5. Send Request To Controller:
 
 
 ```json
@@ -82,10 +82,11 @@ Send Request To Controller:
 }
 ```
 
-It will be automatically mapped to TestRequest.
+####It will be automatically mapped to TestRequest.
 
+---
 
-Validation return array with errors keys:
+###Validation return array with errors keys:
 ```json
 {
     "errors": [
