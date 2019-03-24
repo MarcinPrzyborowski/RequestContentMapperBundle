@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id='request_content_mapper.json_serializer' class="RequestContentMapper\Serializer\JsonSerializer" public="false"/>
+        <service id="RequestContentMapper\Serializer\SerializerInterface" alias="request_content_mapper.json_serializer" public="false"/>
+
+        <service id="request_content_mapper.validator" class="RequestContentMapper\Validator\Validator" public="false">
+            <argument type="service" id="Symfony\Component\Validator\Validator\ValidatorInterface"/>
+        </service>
+
+        <service id="RequestContentMapper\Validator\ValidatorInterface" alias="request_content_mapper.validator" public="false"/>
+
+        <service id="request_content_mapper.json_converter" class="RequestContentMapper\ParamConverter\JsonConverter" public="false">
+            <argument type="service" id="RequestContentMapper\Validator\ValidatorInterface"/>
+            <argument type="service" id="RequestContentMapper\Serializer\SerializerInterface"/>
+            <tag name="request.param_converter" priority="-2" converter="json_converter" />
+        </service>
+
+        <service id="request_content_mapper.event_listener.invalid_json_exception" class="RequestContentMapper\EventListener\InvalidJsonExceptionListener" public="false">
+            <tag name="kernel.event_listener" event="kernel.exception"/>
+        </service>
+
+        <service id="request_content_mapper.event_listener.validation_exception" class="RequestContentMapper\EventListener\ValidationExceptionListener" public="false">
+            <tag name="kernel.event_listener" event="kernel.exception"/>
+        </service>
+    </services>
+</container>
