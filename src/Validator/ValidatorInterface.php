@@ -13,6 +13,7 @@ interface ValidatorInterface
 {
     /**
      * @param $value
+     *
      * @throws ValidationException
      */
     public function validate($value): void;

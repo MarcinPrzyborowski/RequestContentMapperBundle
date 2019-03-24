@@ -20,6 +20,7 @@ final class ValidationExceptionListener extends AbstractExceptionListener
 
     /**
      * @param ValidationException $exception
+     *
      * @return JsonResponse
      */
     public function handleResponse($exception): ExceptionResponse

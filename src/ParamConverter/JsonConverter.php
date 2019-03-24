@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 final class JsonConverter implements ParamConverterInterface
 {
-
     /**
      * @var ValidatorInterface
      */
@@ -36,11 +35,12 @@ final class JsonConverter implements ParamConverterInterface
     /**
      * Stores the object in the request.
      *
-     * @param Request $request
+     * @param Request        $request
      * @param ParamConverter $configuration Contains the name, class and options of the object
      *
-     * @return bool True if the object has been successfully set, else false
      * @throws \RequestContentMapper\Validator\Exception\ValidationException
+     *
+     * @return bool True if the object has been successfully set, else false
      */
     public function apply(Request $request, ParamConverter $configuration): bool
     {
@@ -55,11 +55,13 @@ final class JsonConverter implements ParamConverterInterface
 
     /**
      * @param Request $request
+     *
      * @return array
      */
     private function decodeRequest(Request $request): array
     {
         $content = $request->getContent();
+
         return $this->serializer->deserialize($content);
     }
 
@@ -67,8 +69,10 @@ final class JsonConverter implements ParamConverterInterface
      * Checks if the object is supported.
      *
      * @param ParamConverter $configuration
-     * @return bool True if the object is supported, else false
+     *
      * @throws \ReflectionException
+     *
+     * @return bool True if the object is supported, else false
      */
     public function supports(ParamConverter $configuration): bool
     {
@@ -79,6 +83,7 @@ final class JsonConverter implements ParamConverterInterface
         }
 
         $ref = new \ReflectionClass($class);
+
         return $ref->isSubclassOf(RequestContentObject::class);
     }
 }

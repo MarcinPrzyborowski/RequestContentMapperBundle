@@ -18,8 +18,10 @@ final class JsonSerializer implements SerializerInterface
 
     /**
      * @param $data
-     * @return mixed
+     *
      * @throws InvalidJsonException
+     *
+     * @return mixed
      */
     public function deserialize($data): array
     {
@@ -27,7 +29,7 @@ final class JsonSerializer implements SerializerInterface
             throw new InvalidJsonException();
         }
 
-        $result = \json_decode((string)$data, true);
+        $result = \json_decode((string) $data, true);
 
         if (null === $result) {
             throw new InvalidJsonException();

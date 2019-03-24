@@ -13,9 +13,9 @@ use RequestContentMapper\Tests\ParamConverter\Stub\RequestContentObjectStub;
  */
 class RequestContentObjectTest extends TestCase
 {
-
     /**
      * @dataProvider dataProvider
+     *
      * @param $data
      * @param $expected
      */
@@ -38,9 +38,8 @@ class RequestContentObjectTest extends TestCase
             'arrays' => [['a' => ['a'], 'b' => ['b'], 'c' => ['c']], [['a'], ['b'], ['c']]],
             'objects' => [
                 ['a' => new \stdClass(), 'b' => new \stdClass(), 'c' => new \stdClass()],
-                [new \stdClass(), new \stdClass(), new \stdClass()]
+                [new \stdClass(), new \stdClass(), new \stdClass()],
             ],
         ];
     }
-
 }

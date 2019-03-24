@@ -14,12 +14,12 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  */
 class RequestContentMapperExtension extends Extension
 {
-
     /**
      * Loads a specific configuration.
      *
-     * @param array $configs
+     * @param array            $configs
      * @param ContainerBuilder $container
+     *
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container): void

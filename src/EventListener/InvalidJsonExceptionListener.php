@@ -19,6 +19,7 @@ final class InvalidJsonExceptionListener extends AbstractExceptionListener
 
     /**
      * @param InvalidJsonException $exception
+     *
      * @return ExceptionResponse
      */
     public function handleResponse($exception): ExceptionResponse

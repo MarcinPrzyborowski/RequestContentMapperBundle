@@ -11,7 +11,6 @@ use RequestContentMapper\Validator\Exception\ValidationException;
  */
 final class Validator implements ValidatorInterface
 {
-
     private const MESSAGE = '%s: %s';
 
     /**
@@ -26,6 +25,7 @@ final class Validator implements ValidatorInterface
 
     /**
      * @param $value
+     *
      * @throws ValidationException
      */
     public function validate($value): void

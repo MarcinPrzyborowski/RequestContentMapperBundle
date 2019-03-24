@@ -9,7 +9,6 @@ use Prophecy\Prophecy\ObjectProphecy;
 use RequestContentMapper\Validator\Validator;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
-use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -48,6 +47,7 @@ class ValidatorTest extends TestCase
 
     /**
      * @expectedException \RequestContentMapper\Validator\Exception\ValidationException
+     *
      * @throws \RequestContentMapper\Validator\Exception\ValidationException
      */
     public function test_Validate_Should_ThrowException_When_ObjectIsInvalid()
@@ -59,7 +59,7 @@ class ValidatorTest extends TestCase
         $constraintViolation->getMessage()->willReturn('b')->shouldBeCalledTimes(1);
 
         $constraintList = new ConstraintViolationList([
-            $constraintViolation->reveal()
+            $constraintViolation->reveal(),
         ]);
 
         $this->sfValidator->validate($validObject)->willReturn($constraintList);
