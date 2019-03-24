@@ -82,11 +82,11 @@ class TestController
 }
 ```
 
-####It will be automatically mapped to TestRequest.
+It will be automatically mapped to TestRequest.
 
 ---
 
-###Validation return array with errors keys:
+Validation return array with errors keys:
 ```json
 {
     "errors": [
